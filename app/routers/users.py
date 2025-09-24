@@ -21,7 +21,7 @@ def get_all_users(session: SessionDep) -> list[UserPublic]:
 @router.post("/")
 def add_user(session: SessionDep, user: CreateUser):
 
-    """ Crea un nuovo utente tramite form """
+    """ Crea un nuovo utente """
     session.add(User.model_validate(user))
     session.commit()
     return "User successfully created!"

@@ -4,7 +4,6 @@ from fastapi import Depends
 import os
 from faker import Faker
 from app.config import config
-
 from app.models.models import Event, User, Registration
 
 

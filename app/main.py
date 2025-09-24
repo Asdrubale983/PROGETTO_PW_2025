@@ -1,16 +1,9 @@
 from app.config import config
-
-# NB: do not add imports here!
-
 from pathlib import Path
 import os
 
-# ...and here!!
-
 if Path(__file__).parent == Path(os.getcwd()):
     config.root_dir = "."
-
-# You can add imports from here...
 
 from fastapi import FastAPI
 from app.routers import frontend, events, users, registrations

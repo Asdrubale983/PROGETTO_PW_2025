@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Path, HTTPException
 from app.data.db import SessionDep
 from typing import Annotated
-from app.models.user import User, UserPublic, CreateUser
+from app.models.models import User, UserPublic, CreateUser
 from sqlmodel import select, delete
 
 

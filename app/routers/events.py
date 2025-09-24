@@ -1,11 +1,9 @@
 from fastapi import APIRouter, Path, HTTPException
 from app.data.db import SessionDep
-
-from app.models.event import Event, EventCreate, EventPublic
-from app.models.registration import Registration
-from app.models.user import User, UserPublic
+from app.models.models import Event, EventCreate, EventPublic, Registration, User
 from sqlmodel import select, delete
 from typing import Annotated
+
 
 router = APIRouter(prefix="/events")
 

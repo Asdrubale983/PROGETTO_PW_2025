@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException, Query
 from app.data.db import SessionDep
-from app.models.registration import Registration
+from app.models.models import Registration
 from sqlmodel import select
 from typing import Annotated
 

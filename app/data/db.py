@@ -5,9 +5,7 @@ import os
 from faker import Faker
 from app.config import config
 
-from app.models.event import Event
-from app.models.user import User
-from app.models.registration import Registration
+from app.models.models import Event, User, Registration
 
 
 sqlite_file_name = config.root_dir / "data/database.db"

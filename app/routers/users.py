@@ -28,7 +28,6 @@ def add_user(session: SessionDep, user: CreateUser):
 
 
 
-# da testare!
 @router.delete("/")
 def delete_all_users(session: SessionDep):
 
@@ -66,6 +65,6 @@ def delete_user(
     if user:
         session.delete(user)
         session.commit()
-        return "Book successfully deleted"
+        return "User successfully deleted"
     else: 
         raise HTTPException(status_code=404, detail="User not found")

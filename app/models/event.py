@@ -1,6 +1,7 @@
 from sqlmodel import SQLModel, Field
 from datetime import datetime
 
+
 class BaseEvent(SQLModel):
     # superclasse con attributi comuni
     title: str

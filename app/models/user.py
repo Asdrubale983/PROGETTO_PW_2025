@@ -1,5 +1,6 @@
 from sqlmodel import SQLModel, Field
 
+
 class BaseUser(SQLModel):
     # superclasse con attributi comuni 
     name: str

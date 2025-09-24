@@ -29,14 +29,13 @@ def add_event(session: SessionDep, event: EventCreate):
 
 
 
-# da testare
 @router.delete("/")
 def delete_all_events(session: SessionDep):
 
     """ Elimina la lista di eventi """
     session.exec(delete(Event))
     session.commit()
-    return "All books successfully deleted"
+    return "All events successfully deleted"
 
 
 
@@ -103,9 +102,15 @@ def create_registration(
     event = session.get(Event, id)
     if not event:
         raise HTTPException(status_code=404, detail="Event not found")
+   
     search_user = session.get(User, user.username)
-    if not search_user:
+
+    if not search_user:  # controlla che l'username dell'utente sia nel DB
         raise HTTPException(status_code=404, detail="User not found")
+    
+    # controlla che nome e email corrispondano
+    if search_user.name != user.name or search_user.email != user.email:
+        raise HTTPException(status_code=400, detail="Bad Request")
 
     registration = Registration(username=user.username,
                                 event_id=id)

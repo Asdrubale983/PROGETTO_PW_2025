@@ -32,9 +32,14 @@ def delete_all_events(session: SessionDep):
 
     """ Elimina la lista di eventi """
     session.exec(delete(Event))
+
+    # Cancella anche l'interità della tabella Registration
+    session.exec(delete(Registration))
+    
     session.commit()
     return "All events successfully deleted"
 
+    
 
 
 @router.get("/{id}")
@@ -110,8 +115,12 @@ def create_registration(
     if search_user.name != user.name or search_user.email != user.email:
         raise HTTPException(status_code=400, detail="Bad Request")
 
-    registration = Registration(username=user.username,
-                                event_id=id)
+
+    registration = Registration(username=search_user.username,
+                                event_id=event.id,
+                                user_attr = search_user,
+                                event_attr = event)
     session.add(Registration.model_validate(registration))
     session.commit()
+
     return "Registration completed successfully"

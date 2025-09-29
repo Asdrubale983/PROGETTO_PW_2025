@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Path, HTTPException
 from app.data.db import SessionDep
 from typing import Annotated
-from app.models.models import User, UserPublic, CreateUser
+from app.models.models import User, UserPublic, CreateUser, Registration
 from sqlmodel import select, delete
 
 
@@ -33,6 +33,10 @@ def delete_all_users(session: SessionDep):
 
     """ Elimina la lista di utenti """
     session.exec(delete(User))
+
+    # Cancella anche l'interità della tabella Registration
+    session.exec(delete(Registration))
+
     session.commit()
     return "All users successfully deleted!"
 

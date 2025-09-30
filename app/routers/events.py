@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Path, HTTPException
 from app.data.db import SessionDep
-from app.models.models import Event, EventCreate, EventPublic, Registration, User
+from app.models.models import Event, EventCreate, EventPublic, Registration, User, UserPublic
 from sqlmodel import select, delete
 from typing import Annotated
 
@@ -98,7 +98,7 @@ def delete_event(
 def create_registration(
     session: SessionDep,
     id: Annotated[int, Path(description="The ID of the event to get")],
-    user: User
+    user: UserPublic
     ):
 
     """ Registra un utente a un dato evento """
